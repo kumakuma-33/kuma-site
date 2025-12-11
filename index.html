@@ -3,142 +3,273 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kumaホールディングス | 公式サイト</title>
+  <title>kumaホールディングス | 森を歩くコーポレートサイト</title>
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f5f7fb;
-      --primary: #1f4d8b;
-      --accent: #f0b429;
-      --text: #1f2a37;
+      color-scheme: dark;
+      --night: #04140b;
+      --deep: #0b2815;
+      --mist: rgba(255, 255, 255, 0.08);
+      --text: #f6fff2;
+      --accent: #f7c948;
+      --secondary: #9fe870;
     }
     * {
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: "Hiragino Sans", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.8;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 20%, #12361d 0%, var(--night) 55%) fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+    body::before {
+      background:
+        repeating-linear-gradient(75deg, rgba(9, 32, 19, 0.6), rgba(9, 32, 19, 0.6) 6px, transparent 6px, transparent 24px),
+        repeating-linear-gradient(105deg, rgba(8, 26, 16, 0.4), rgba(8, 26, 16, 0.4) 12px, transparent 12px, transparent 32px);
+      mix-blend-mode: multiply;
+      opacity: 0.6;
+    }
+    body::after {
+      background: radial-gradient(circle at 60% 10%, rgba(255, 255, 255, 0.1), transparent 40%),
+        linear-gradient(180deg, rgba(4, 20, 11, 0) 0%, rgba(4, 20, 11, 0.9) 100%);
+      z-index: -1;
     }
     header {
-      background: linear-gradient(135deg, var(--primary), #3a6fb0);
-      color: #fff;
-      padding: 3rem 1.5rem 2rem;
       text-align: center;
+      padding: 4rem 1rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.15), transparent 60%);
+      pointer-events: none;
     }
     header h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      letter-spacing: 0.12rem;
     }
     header p {
-      margin: 0.5rem 0 0;
-      opacity: 0.9;
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: #d3e7d2;
     }
     nav {
-      background: #fff;
       position: sticky;
       top: 0;
-      z-index: 10;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      z-index: 20;
+      background: rgba(6, 20, 12, 0.92);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
     }
     nav ul {
+      list-style: none;
       display: flex;
       flex-wrap: wrap;
-      list-style: none;
-      margin: 0 auto;
-      padding: 0.5rem 1rem;
-      max-width: 960px;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 0;
+      padding: 0.75rem 1rem;
     }
     nav a {
       text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
-      padding: 0.35rem 0.75rem;
+      color: var(--text);
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     nav a:hover,
     nav a:focus {
-      background: rgba(31, 77, 139, 0.1);
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+    .wayfinding {
+      position: fixed;
+      top: 50%;
+      right: 1.5rem;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      letter-spacing: 0.3rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      pointer-events: none;
     }
     main {
-      max-width: 960px;
+      width: min(960px, 100%);
       margin: 0 auto;
-      padding: 2rem 1rem 4rem;
+      padding: 2rem 1.5rem 4rem;
+      position: relative;
+    }
+    main::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: clamp(140px, 30vw, 260px);
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+      filter: blur(18px);
+      opacity: 0.6;
+      z-index: 0;
     }
     section {
-      background: #fff;
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      position: relative;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      border-radius: 24px;
+      background: rgba(5, 24, 14, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      z-index: 1;
+      overflow: hidden;
     }
-    section h2 {
+    section::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.15);
+    }
+    section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 45%);
+      pointer-events: none;
+    }
+    h2 {
       margin-top: 0;
-      color: var(--primary);
+      color: var(--secondary);
+      font-size: 1.6rem;
+    }
+    .intro-text {
+      font-size: 1.05rem;
+      color: #e0f2d7;
     }
     .news-list {
-      padding-left: 1rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    .news-list li {
-      margin-bottom: 0.5rem;
+    .news-list li + li {
+      margin-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 0.75rem;
+    }
+    .news-date {
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      margin-right: 0.5rem;
     }
     .business-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
+      margin-top: 1.5rem;
     }
     .business-card {
-      border: 1px solid rgba(31, 77, 139, 0.12);
-      border-radius: 12px;
-      padding: 1rem;
-      background: #fafbff;
+      padding: 1.25rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(9, 38, 22, 0.9);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+    .business-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+      letter-spacing: 0.1rem;
     }
     .info-table {
       width: 100%;
       border-collapse: collapse;
+      margin-top: 1rem;
     }
     .info-table th,
     .info-table td {
-      border-bottom: 1px solid #e5e7eb;
       padding: 0.75rem 0.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       text-align: left;
     }
     .info-table th {
-      width: 30%;
-      color: #4b5563;
+      color: rgba(255, 255, 255, 0.7);
+      width: 28%;
       font-weight: 600;
     }
     .cta {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background: var(--accent);
-      color: #111;
+      padding: 0.9rem 1.6rem;
       border-radius: 999px;
+      background: linear-gradient(120deg, var(--accent), #f98b2d);
+      color: #1f1400;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.05rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
     }
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
+      color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
-      color: #6b7280;
     }
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        scroll-behavior: auto !important;
+    .scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.15rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .scroll-hint::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    @media (max-width: 640px) {
+      .wayfinding {
+        display: none;
+      }
+      section {
+        padding: 1.5rem;
+      }
+      nav ul {
+        justify-content: flex-start;
       }
     }
   </style>
 </head>
 <body>
   <header>
+    <p class="scroll-hint">Scroll to walk into the forest</p>
     <h1>kumaホールディングス</h1>
-    <p>「森と街をつなぐ」を合言葉に、地域とともに歩む総合グループ</p>
+    <p>森と街をつなぎ続ける、地域共創カンパニー</p>
   </header>
   <nav>
     <ul>
@@ -149,49 +280,52 @@
       <li><a href="#ir">IR情報</a></li>
     </ul>
   </nav>
+  <div class="wayfinding" aria-hidden="true">FOREST TRAIL</div>
   <main>
-    <section id="about">
+    <section id="about" data-label="Entrance">
       <h2>kumaホールディングスについて</h2>
-      <p>
-        1948年創業。北海道の小さな製材所からスタートしたkumaホールディングスは、
-        森林資源の循環と地域の豊かさを両立させることを使命に、多様な事業へと広がってきました。
-        私たちは「森から暮らしへ」のバリューチェーンを自社グループ内で完結させ、
-        サステナブルな社会の実現に貢献します。
+      <p class="intro-text">
+        1948年、北海道の小さな製材所からはじまったkumaホールディングスは、森林と都市を循環させるモノづくりを軸に、
+        林業・建築・飲食・出版へと事業領域を広げてきました。森を守りながら地域の暮らしを耕すこと。
+        それが私たちの変わらない歩幅です。
       </p>
     </section>
 
-    <section id="news">
+    <section id="news" data-label="Forest Echo">
       <h2>ニュース</h2>
       <ul class="news-list">
-        <li>2024.05.01　森林由来バイオマスを活用した新発電設備が稼働を開始しました。</li>
-        <li>2024.04.18　直営レストラン「森のテーブル」札幌店がオープン。</li>
-        <li>2024.03.28　建築事業部がZEHタウン開発でグッドデザイン賞を受賞。</li>
+        <li><span class="news-date">2024.05.01</span>森林由来バイオマスを活用した新発電設備が稼働を開始しました。</li>
+        <li><span class="news-date">2024.04.18</span>直営レストラン「森のテーブル」札幌店がオープンしました。</li>
+        <li><span class="news-date">2024.03.28</span>建築事業部がZEHタウン開発でグッドデザイン賞を受賞しました。</li>
       </ul>
     </section>
 
-    <section id="business">
+    <section id="business" data-label="Deep Woods">
       <h2>主要事業</h2>
+      <p class="intro-text">
+        森で生まれた価値を、市場や暮らしにまで届ける「森から街まで」の一気通貫体制が私たちの強みです。
+      </p>
       <div class="business-grid">
         <article class="business-card">
           <h3>林業</h3>
-          <p>自社保有林6,000haで持続可能な森林経営を実践し、間伐材の高度利用を推進。</p>
+          <p>自社保有林6,000haでの持続可能な森林経営。間伐材の高度利用によるCO₂固定の最大化に挑戦。</p>
         </article>
         <article class="business-card">
           <h3>飲食</h3>
-          <p>木の温もりをテーマにしたカフェ・レストランを全国12店舗展開し、地域食材を発信。</p>
+          <p>木の温もりを感じるカフェ・レストランを12店舗展開。地域食材と森のストーリーを料理で伝えます。</p>
         </article>
         <article class="business-card">
           <h3>建築</h3>
-          <p>木造中大規模建築の設計・施工を手掛け、再生可能素材による街づくりに挑戦。</p>
+          <p>国産材を活かした木造中大規模建築を設計・施工。街並みに森の質感を取り戻すプロジェクトを推進。</p>
         </article>
         <article class="business-card">
           <h3>出版</h3>
-          <p>森と暮らしをテーマにした雑誌・書籍を企画し、ライフスタイルメディアを展開。</p>
+          <p>「森と暮らし」をテーマにしたメディア＆出版。木を軸にしたライフスタイル提案を国内外へ発信。</p>
         </article>
       </div>
     </section>
 
-    <section id="info">
+    <section id="info" data-label="Clearing">
       <h2>基本情報</h2>
       <table class="info-table">
         <tr>
@@ -217,11 +351,11 @@
       </table>
     </section>
 
-    <section id="ir">
+    <section id="ir" data-label="Outlook">
       <h2>IR情報</h2>
-      <p>
-        四半期決算ハイライト、財務データ、各種開示資料を順次公開しています。
-        サステナビリティ指標を含む統合報告書を2024年版より発行予定です。
+      <p class="intro-text">
+        四半期ごとの決算ハイライトやESG指標、サステナビリティ戦略など、投資家のみなさまに向けた情報を提供しています。
+        2024年版の統合報告書は、森の成長ステップに着想を得たストーリーテリングで構成予定です。
       </p>
       <a class="cta" href="#">最新の決算資料を見る</a>
     </section>
