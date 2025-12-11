@@ -3,35 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kuma site</title>
+  <title>kumaホールディングス | 公式サイト</title>
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --primary: #1f4d8b;
+      --accent: #f0b429;
+      --text: #1f2a37;
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 2rem;
-      background: #f6f8fa;
-      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #3a6fb0);
+      color: #fff;
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      opacity: 0.9;
+    }
+    nav {
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      max-width: 960px;
+      gap: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+    }
+    nav a:hover,
+    nav a:focus {
+      background: rgba(31, 77, 139, 0.1);
     }
     main {
-      max-width: 720px;
+      max-width: 960px;
       margin: 0 auto;
+      padding: 2rem 1rem 4rem;
     }
-    h1 {
+    section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+    section h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .news-list {
+      padding-left: 1rem;
+    }
+    .news-list li {
       margin-bottom: 0.5rem;
     }
-    p {
-      line-height: 1.6;
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .business-card {
+      border: 1px solid rgba(31, 77, 139, 0.12);
+      border-radius: 12px;
+      padding: 1rem;
+      background: #fafbff;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .info-table th,
+    .info-table td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.75rem 0.25rem;
+      text-align: left;
+    }
+    .info-table th {
+      width: 30%;
+      color: #4b5563;
+      font-weight: 600;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #111;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>kumaホールディングス</h1>
+    <p>「森と街をつなぐ」を合言葉に、地域とともに歩む総合グループ</p>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#about">kumaホールディングスについて</a></li>
+      <li><a href="#news">ニュース</a></li>
+      <li><a href="#business">主要事業</a></li>
+      <li><a href="#info">基本情報</a></li>
+      <li><a href="#ir">IR情報</a></li>
+    </ul>
+  </nav>
   <main>
-    <h1>こんにちは、kumaホールディングスです。</h1>
-    <p>
-      このサイトではkuma ホールディングスが展開する様々な事業について紹介しています。<br />
-      IR情報
-      
-    </p>
+    <section id="about">
+      <h2>kumaホールディングスについて</h2>
+      <p>
+        1948年創業。北海道の小さな製材所からスタートしたkumaホールディングスは、
+        森林資源の循環と地域の豊かさを両立させることを使命に、多様な事業へと広がってきました。
+        私たちは「森から暮らしへ」のバリューチェーンを自社グループ内で完結させ、
+        サステナブルな社会の実現に貢献します。
+      </p>
+    </section>
+
+    <section id="news">
+      <h2>ニュース</h2>
+      <ul class="news-list">
+        <li>2024.05.01　森林由来バイオマスを活用した新発電設備が稼働を開始しました。</li>
+        <li>2024.04.18　直営レストラン「森のテーブル」札幌店がオープン。</li>
+        <li>2024.03.28　建築事業部がZEHタウン開発でグッドデザイン賞を受賞。</li>
+      </ul>
+    </section>
+
+    <section id="business">
+      <h2>主要事業</h2>
+      <div class="business-grid">
+        <article class="business-card">
+          <h3>林業</h3>
+          <p>自社保有林6,000haで持続可能な森林経営を実践し、間伐材の高度利用を推進。</p>
+        </article>
+        <article class="business-card">
+          <h3>飲食</h3>
+          <p>木の温もりをテーマにしたカフェ・レストランを全国12店舗展開し、地域食材を発信。</p>
+        </article>
+        <article class="business-card">
+          <h3>建築</h3>
+          <p>木造中大規模建築の設計・施工を手掛け、再生可能素材による街づくりに挑戦。</p>
+        </article>
+        <article class="business-card">
+          <h3>出版</h3>
+          <p>森と暮らしをテーマにした雑誌・書籍を企画し、ライフスタイルメディアを展開。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="info">
+      <h2>基本情報</h2>
+      <table class="info-table">
+        <tr>
+          <th>創業</th>
+          <td>1948年3月</td>
+        </tr>
+        <tr>
+          <th>代表者</th>
+          <td>代表取締役社長　熊野 亮</td>
+        </tr>
+        <tr>
+          <th>従業員数</th>
+          <td>グループ1,250名（2024年4月現在）</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>北海道札幌市中央区北5条西12丁目</td>
+        </tr>
+        <tr>
+          <th>事業所</th>
+          <td>全国12拠点（国内11、海外1）</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="ir">
+      <h2>IR情報</h2>
+      <p>
+        四半期決算ハイライト、財務データ、各種開示資料を順次公開しています。
+        サステナビリティ指標を含む統合報告書を2024年版より発行予定です。
+      </p>
+      <a class="cta" href="#">最新の決算資料を見る</a>
+    </section>
   </main>
+  <footer>
+    &copy; 2024 kuma Holdings Co., Ltd.
+  </footer>
 </body>
 </html>
