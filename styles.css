@@ -16,9 +16,24 @@ body {
   font-family: "Hiragino Sans", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.8;
   color: var(--text);
-  background: radial-gradient(circle at 20% 20%, #12361d 0%, var(--night) 55%) fixed;
+  background:
+    linear-gradient(160deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.4)),
+    radial-gradient(circle at 20% 20%, rgba(18, 54, 29, 0.6) 0%, rgba(4, 20, 11, 0.9) 55%),
+    url("mori.jpg") center / cover fixed;
   min-height: 100vh;
   overflow-x: hidden;
+}
+#forest-canvas-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+}
+#forest-canvas-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 body::before,
 body::after {
